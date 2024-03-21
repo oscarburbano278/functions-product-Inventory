@@ -83,7 +83,8 @@ async function menu(arrayProductos) {
         break;
 
       case 2:
-        console.log(`Mostrar un Productos:`);
+        console.log(`Mostrar un Productos:`);        
+        mostrar(arrayProductos);
         
         break;
       case 3:
@@ -131,4 +132,17 @@ async function crear() {
   );
 
   return objDirigidoA;
+}
+
+//MOSTRAR USUARIOS 
+async function mostrar(arrayProductos){
+  for (let index = 0; index < arrayProductos.length; index++) {
+    console.log(index + 1);
+    console.log('Id producto:',arrayProductos[index].id);
+    console.log('Nombre producto:',arrayProductos[index].nombre);
+    console.log('Cantidad del producto:',arrayProductos[index].cantidad);
+    console.log('Precio producto:',arrayProductos[index].precio);
+    console.log('__________________________')
+    
+  }
 }
