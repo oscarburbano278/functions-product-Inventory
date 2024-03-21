@@ -229,7 +229,7 @@ async function menuUsuarios(arrayUsuarios) {
         break;
       case 3:
         console.log(`Actualizar un Usuario`);
-        
+        await actualizarUsuario(arrayUsuarios);
 
         break;
 
@@ -268,9 +268,7 @@ async function crearUsuario() {
     await capturarValor(`digite el id del Usuario:  `)
   );
   objCrearUsuario.nombre = await capturarValor(`digite el nombre del Usuario:  `);
-  objCrearUsuario.apellido = parseInt(
-    await capturarValor(`digite el apellido del Usuario:  `)
-  );
+  objCrearUsuario.apellido = await capturarValor(`digite el apellido del Usuario:  `);
 
   return objCrearUsuario;
 }
@@ -287,3 +285,19 @@ async function mostrarUsuarios(arrayUsuarios){
   }
 }
 
+//ACTUALIZAR UN USUARIO
+async function actualizarUsuario(arrayUsuarios) {
+    
+  let buscarUsuario = parseInt(await capturarValor(`ingrese el Id del usuario a Actualizar:  `));
+  let actNombre = await capturarValor(`ingrese el nombre a actualizar: `);
+  let actApellido = await capturarValor(`ingrese el apellido del usuario a actualizar: `);  
+
+  for (let i = 0; i < arrayUsuarios.length; i++) {
+    if (arrayUsuarios[i].id == buscarUsuario) {
+      arrayUsuarios[i].nombre = actNombre;
+      arrayUsuarios[i].apellido = actApellido;
+      
+      console.log(arrayUsuarios);
+    }
+  }
+}
