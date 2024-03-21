@@ -95,7 +95,8 @@ async function menu(arrayProductos) {
 
       case 4:
         console.log(`Eliminar un Producto`);
-       
+        arrayProductos = await eliminar(arrayProductos);        
+        console.log('el producto a sido eliminado correctamente. Los productos que hay en el inventario son:',arrayProductos);
 
         break;
       case 5:
@@ -164,4 +165,13 @@ async function actualizar(arrayProductos) {
       console.log(arrayProductos);
     }
   }
+}
+
+//busca y ELIMINAR UN PRODUCTO 
+async function eliminar(arrayProductos){  
+
+  let buscarIdEliminar = parseInt(await capturarValor(`ingrese el Id del producto que desea Eliminar:  `));  
+
+     return arrayProductos.filter((producto) => (producto.id !== buscarIdEliminar));// aqui me da los que quedan en el array 
+    
 }
