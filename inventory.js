@@ -22,23 +22,21 @@ async function main() {
   console.log("inventario de Productos");
 
   let accionRealizar;
-
-  accionRealizar = parseInt(
-    await capturarValor(
-      "digite el modulo a revisar: 1. Productos, 2. Usuarios, 3. Ventas, 4. Inventario :..."
+  
+  accionRealizar = parseInt(await capturarValor("digite el modulo a revisar: 1. Productos, 2. Usuarios, 3. Ventas, 4. Inventario :..."
     )
   );
 
   switch (accionRealizar) {
     case 1:
       console.log("has seleccionado la seccion de PRODUCTOS");
-      await menu(arrayProductos);
+      await menuProductos(arrayProductos);
 
       break;
 
     case 2:
       console.log("has seleccionado la seccion de USUARIOS");
-
+      await menuUsuarios(arrayProductos);
       break;
 
     case 3:
@@ -60,13 +58,13 @@ main();
 
 ///// CRUD PRODUCTO
 
-async function menu(arrayProductos) {
+async function menuProductos(arrayProductos) {
   let menuSeleccion;
 
-  while (menuSeleccion !== 6) {
+  while (menuSeleccion !== 7) {
     menuSeleccion = parseInt(
       await capturarValor(
-        "digite la accion a realizar: 1. Crear, 2. Mostrar , 3. Actualizar , 4.Eliminar, 5 Buscar :...  "
+        "digite la accion a realizar: 1. Crear, 2. Mostrar , 3. Actualizar , 4.Eliminar, 5 Buscar, 6 Salir del modulo de productos  :...  "
       )
     );
 
@@ -102,6 +100,12 @@ async function menu(arrayProductos) {
       case 5:
         console.log(`Buscar un Producto`);
         await buscar(arrayProductos);
+        break;
+
+      case 6:
+        console.log(`Saliendo.....`);
+        await main();
+        
         break;
 
       default:
@@ -166,7 +170,7 @@ async function actualizar(arrayProductos) {
   }
 }
 
-//busca y ELIMINAR UN PRODUCTO 
+//ELIMINAR UN PRODUCTO 
 async function eliminar(arrayProductos){  
 
   let buscarIdEliminar = parseInt(await capturarValor(`ingrese el Id del producto que desea Eliminar:  `));  
@@ -174,7 +178,7 @@ async function eliminar(arrayProductos){
      return arrayProductos.filter((producto) => (producto.id !== buscarIdEliminar));// aqui me da los que quedan en el array 
     
 }
-
+// BUSCAR Y MOSTRAR EL PRODUCTO 
 async function buscar (arrayProductos){
   let buscar = parseInt(await capturarValor(`ingrese el Id del producto que desea Buscar:  `));
 
