@@ -224,7 +224,7 @@ async function menuUsuarios(arrayUsuarios) {
 
       case 2:
         console.log(`Mostrar un Usuarios:`);        
-        
+        mostrarUsuarios(arrayUsuarios);
         
         break;
       case 3:
@@ -273,5 +273,17 @@ async function crearUsuario() {
   );
 
   return objCrearUsuario;
+}
+
+//MOSTRAR USUARIOS 
+async function mostrarUsuarios(arrayUsuarios){
+  for (let i = 0; i < arrayUsuarios.length; i++) {
+    console.log(i + 1);
+    console.log('Id usuario:',arrayUsuarios[i].id);
+    console.log('Nombre usuario:',arrayUsuarios[i].nombre);
+    console.log('Apellido del usuario:',arrayUsuarios[i].apellido);    
+    console.log('__________________________')
+    
+  }
 }
 
