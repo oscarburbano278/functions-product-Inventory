@@ -241,7 +241,7 @@ async function menuUsuarios(arrayUsuarios) {
         break;
       case 5:
         console.log(`Buscar un Usuario`);
-        
+        await buscarUsuario(arrayUsuarios);
         break;
 
       case 6:
@@ -281,7 +281,7 @@ async function mostrarUsuarios(arrayUsuarios){
     console.log('Id usuario:',arrayUsuarios[i].id);
     console.log('Nombre usuario:',arrayUsuarios[i].nombre);
     console.log('Apellido del usuario:',arrayUsuarios[i].apellido);    
-    console.log('__________________________')
+    console.log('__________________________');
     
   }
 }
@@ -310,4 +310,23 @@ async function eliminarUsuarios(arrayUsuarios){
 
      return arrayUsuarios.filter((usuario) => (usuario.id !== buscarIdEliminar));
     
+}
+// BUSCAR Y MOSTRAR EL USUARIO 
+async function buscarUsuario (arrayUsuarios){
+  let buscar = parseInt(await capturarValor(`ingrese el Id del usuario que desea Buscar:  `));
+
+  for (let u = 0; u < arrayUsuarios.length; u++) {
+    if (arrayUsuarios[u].id == buscar) {
+      console.log('----------------------------');
+      console.log('Id usuario:',arrayUsuarios[u].id);
+      console.log('Nombre usuario:',arrayUsuarios[u].nombre);
+      console.log('Apellido del usuario:',arrayUsuarios[u].apellido); 
+      console.log('----------------------------');     
+    }
+    else{
+      console.log('el usuario buscado no se encuentra en el inventario');
+    }
+    
+  }
+  return
 }
