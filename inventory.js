@@ -101,8 +101,8 @@ async function menu(arrayProductos) {
         break;
       case 5:
         console.log(`Buscar un Producto`);
-       
-  
+        const buscarProducto = await buscar(arrayProductos);        
+        console.log('el producto que buscas es: ', buscarProducto);  
         break;
 
       default:
@@ -174,4 +174,11 @@ async function eliminar(arrayProductos){
 
      return arrayProductos.filter((producto) => (producto.id !== buscarIdEliminar));// aqui me da los que quedan en el array 
     
+}
+
+async function buscar (arrayProductos){
+  let buscar = parseInt(await capturarValor(`ingrese el Id del producto que desea Buscar:  `));
+
+    const productoEncontrado = arrayProductos.find((arrayProductos) => arrayProductos.id == buscar);
+    return productoEncontrado;
 }
