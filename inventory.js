@@ -235,7 +235,8 @@ async function menuUsuarios(arrayUsuarios) {
 
       case 4:
         console.log(`Eliminar un Usuario`);
-        
+        arrayUsuarios = await eliminarUsuarios(arrayUsuarios);        
+        console.log('el usuario a sido eliminado correctamente. Los usuarios que hay en el inventario son:',arrayUsuarios);
 
         break;
       case 5:
@@ -300,4 +301,13 @@ async function actualizarUsuario(arrayUsuarios) {
       console.log(arrayUsuarios);
     }
   }
+}
+
+//ELIMINAR UN USUARIO 
+async function eliminarUsuarios(arrayUsuarios){  
+
+  let buscarIdEliminar = parseInt(await capturarValor(`ingrese el Id del usuario que desea Eliminar:  `));  
+
+     return arrayUsuarios.filter((usuario) => (usuario.id !== buscarIdEliminar));
+    
 }
