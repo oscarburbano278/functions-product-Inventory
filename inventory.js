@@ -18,8 +18,9 @@ function capturarValor(mensaje) {
 
 async function main() {
     let arrayProductos = [];
+    let arrayUsuarios = [];
 
-  console.log("inventario de Productos");
+  console.log("inventario de Usuarios");
 
   let accionRealizar;
   
@@ -36,7 +37,7 @@ async function main() {
 
     case 2:
       console.log("has seleccionado la seccion de USUARIOS");
-      await menuUsuarios(arrayProductos);
+      await menuUsuarios(arrayUsuarios);
       break;
 
     case 3:
@@ -198,3 +199,79 @@ async function buscar (arrayProductos){
   }
   return
 }
+
+/// CRUD USUARIOS
+async function menuUsuarios(arrayUsuarios) {
+  let menuSeleccionUsuarios;
+
+  while (menuSeleccionUsuarios !== 7) {
+    menuSeleccionUsuarios = parseInt(
+      await capturarValor(
+        "digite la accion a realizar: 1. Crear, 2. Mostrar , 3. Actualizar , 4.Eliminar, 5 Buscar, 6 Salir del modulo :...  "
+      )
+    );
+
+    switch (menuSeleccionUsuarios) {
+      case 1:
+        console.log(`Crear un Usuario`);
+        
+        const usuario = await crearUsuario();
+        console.log('usuario creado', usuario.id)
+        arrayUsuarios.push(usuario);
+        console.log('la cantidad de usuarios que tenemos es: ',arrayUsuarios.length);      
+
+        break;
+
+      case 2:
+        console.log(`Mostrar un Usuarios:`);        
+        
+        
+        break;
+      case 3:
+        console.log(`Actualizar un Usuario`);
+        
+
+        break;
+
+      case 4:
+        console.log(`Eliminar un Usuario`);
+        
+
+        break;
+      case 5:
+        console.log(`Buscar un Usuario`);
+        
+        break;
+
+      case 6:
+        console.log(`Saliendo.....`);
+        await main();
+        
+        break;
+
+      default:
+        console.log("digite una opcion valida");
+        break;
+    }
+  }
+}
+
+// CREAR UN USUARIO
+async function crearUsuario() {
+  let objCrearUsuario = {
+    id: "",
+    nombre: "",
+    apellido: "",    
+  };
+
+  objCrearUsuario.id = parseInt(
+    await capturarValor(`digite el id del Usuario:  `)
+  );
+  objCrearUsuario.nombre = await capturarValor(`digite el nombre del Usuario:  `);
+  objCrearUsuario.apellido = parseInt(
+    await capturarValor(`digite el apellido del Usuario:  `)
+  );
+
+  return objCrearUsuario;
+}
+
