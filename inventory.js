@@ -73,7 +73,12 @@ async function menu(arrayProductos) {
     switch (menuSeleccion) {
       case 1:
         console.log(`Crear un Producto`);
-       
+        //console.log('la cantidad de productos que tenemos es: ',arrayProductos.length)
+
+        const producto = await crear();
+        console.log('producto creado', producto.id)
+        arrayProductos.push(producto);
+        console.log('la cantidad de productos que tenemos es: ',arrayProductos.length);      
 
         break;
 
@@ -103,4 +108,27 @@ async function menu(arrayProductos) {
         break;
     }
   }
+}
+
+// CREAR UN PRODUCTO
+async function crear() {
+  let objDirigidoA = {
+    id: "",
+    nombre: "",
+    cantidad: "",
+    precio: "",
+  };
+
+  objDirigidoA.id = parseInt(
+    await capturarValor(`digite el id del Producto:  `)
+  );
+  objDirigidoA.nombre = await capturarValor(`digite el nombre del Producto:  `);
+  objDirigidoA.cantidad = parseInt(
+    await capturarValor(`digite la cantidad del Producto:  `)
+  );
+  objDirigidoA.precio = parseInt(
+    await capturarValor(`digite el precio del Producto:  `)
+  );
+
+  return objDirigidoA;
 }
