@@ -89,7 +89,7 @@ async function menu(arrayProductos) {
         break;
       case 3:
         console.log(`Actualizar un Producto`);
-       
+        await actualizar(arrayProductos);
 
         break;
 
@@ -144,5 +144,24 @@ async function mostrar(arrayProductos){
     console.log('Precio producto:',arrayProductos[index].precio);
     console.log('__________________________')
     
+  }
+}
+
+//ACTUALIZAR UN PRODUCTO
+async function actualizar(arrayProductos) {
+    
+  let buscar = parseInt(await capturarValor(`ingrese el Id del producto a Actualizar:  `));
+  let actNombre = await capturarValor(`ingrese el nombre a actualizar: `);
+  let actCantidad = parseInt(await capturarValor(`ingrese la cantidad del producto a actualizar: `));
+  let actPrecio = parseInt(await capturarValor(`ingrese el precio del producto a actualizar: `));
+
+  for (let i = 0; i < arrayProductos.length; i++) {
+    if (arrayProductos[i].id == buscar) {
+      arrayProductos[i].nombre = actNombre;
+      arrayProductos[i].cantidad = actCantidad;
+      arrayProductos[i].precio = actPrecio;
+
+      console.log(arrayProductos);
+    }
   }
 }
