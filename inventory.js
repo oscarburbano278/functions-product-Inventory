@@ -101,8 +101,7 @@ async function menu(arrayProductos) {
         break;
       case 5:
         console.log(`Buscar un Producto`);
-        const buscarProducto = await buscar(arrayProductos);        
-        console.log('el producto que buscas es: ', buscarProducto);  
+        await buscar(arrayProductos);
         break;
 
       default:
@@ -179,6 +178,19 @@ async function eliminar(arrayProductos){
 async function buscar (arrayProductos){
   let buscar = parseInt(await capturarValor(`ingrese el Id del producto que desea Buscar:  `));
 
-    const productoEncontrado = arrayProductos.find((arrayProductos) => arrayProductos.id == buscar);
-    return productoEncontrado;
+  for (let j = 0; j < arrayProductos.length; j++) {
+    if (arrayProductos[j].id == buscar) {
+      console.log('----------------------------');
+      console.log('Id producto:',arrayProductos[j].id);
+      console.log('Nombre producto:',arrayProductos[j].nombre);
+      console.log('Cantidad del producto:',arrayProductos[j].cantidad);
+      console.log('Precio producto:',arrayProductos[j].precio);
+      console.log('----------------------------');     
+    }
+    else{
+      console.log('el producto buscado no se encuentra en el inventario');
+    }
+    
+  }
+  return
 }
