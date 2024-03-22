@@ -1,4 +1,5 @@
-module.exports = menuUsuarios;
+module.exports = menuUsuarios;// exportando a inventory.js
+
 
 const { on } = require("events");
 const { copyFileSync } = require("fs");
@@ -23,7 +24,7 @@ function capturarValor(mensaje) {
 async function menuUsuarios(arrayUsuarios) {
   let menuSeleccionUsuarios;
 
-  while (menuSeleccionUsuarios !== 7) {
+  while (menuSeleccionUsuarios !== 6) {
     menuSeleccionUsuarios = parseInt(
       await capturarValor(
         "digite la accion a realizar: 1. Crear, 2. Mostrar , 3. Actualizar , 4.Eliminar, 5 Buscar, 6 Salir del modulo de Usuarios :...  "
@@ -65,8 +66,6 @@ async function menuUsuarios(arrayUsuarios) {
 
       case 6:
         console.log(`Saliendo.....`);
-        await main();
-        
         break;
 
       default:

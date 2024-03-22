@@ -1,8 +1,10 @@
-const menuUsuarios = require('./crudUsuarios');
+module.exports = main;// exportando a crudUsuarios.js y a ventas.js
+const menuUsuarios = require('./crudUsuarios');// importando desde crudUsuarios.js
 
 const { on } = require("events");
 const { copyFileSync } = require("fs");
 const readline = require("readline");
+const menuVentas = require('./ventas');
 
 function capturarValor(mensaje) {
   const rl = readline.createInterface({
@@ -21,10 +23,11 @@ function capturarValor(mensaje) {
 async function main() {
     let arrayProductos = [];
     let arrayUsuarios = [];
+    let arrayVentas = [];
 
   console.log("inventario de Usuarios");
-
   let accionRealizar;
+do{
   
   accionRealizar = parseInt(await capturarValor("digite el modulo a revisar: 1. Productos, 2. Usuarios, 3. Ventas, 4. Inventario :..."
     )
@@ -43,19 +46,24 @@ async function main() {
       break;
 
     case 3:
-      console.log("has seleccionado la seccion de ACTUALIZAR");
-
+      console.log("has seleccionado la seccion de VENTAS");
+      await menuVentas(arrayVentas,arrayProductos,arrayUsuarios);
       break;
 
     case 4:
-      console.log("has seleccionado la seccion de ELIMINAR");
+      console.log("has seleccionado la seccion de INVENTARIO");
 
       break;
-
+      case 5:
+        console.log("saliendo..");
+  
+        break;
     default:
       console.log("digite una opcion valida");
       break;
   }
+}while(accionRealizar != 5)
+  
 }
 main();
 
@@ -64,7 +72,7 @@ main();
 async function menuProductos(arrayProductos) {
   let menuSeleccion;
 
-  while (menuSeleccion !== 7) {
+  while (menuSeleccion !== 6) {
     menuSeleccion = parseInt(
       await capturarValor(
         "digite la accion a realizar: 1. Crear, 2. Mostrar , 3. Actualizar , 4.Eliminar, 5 Buscar, 6 Salir del modulo de productos  :...  "
@@ -107,7 +115,7 @@ async function menuProductos(arrayProductos) {
 
       case 6:
         console.log(`Saliendo.....`);
-        await main();
+
         
         break;
 
