@@ -1,8 +1,5 @@
-module.exports = main;// exportando a crudUsuarios.js y a ventas.js
-const menuUsuarios = require('./crudUsuarios');// importando desde crudUsuarios.js
+const {menuUsuarios} = require('./crudUsuarios');// importando desde crudUsuarios.js
 
-const { on } = require("events");
-const { copyFileSync } = require("fs");
 const readline = require("readline");
 const menuVentas = require('./ventas');
 
@@ -209,3 +206,12 @@ async function buscar (arrayProductos){
   }
   return
 }
+
+// async function obtenerProducto(arrayProductos){
+//   let buscar = parseInt(await capturarValor(`ingrese el Id del producto que desea Obtener:  `));
+//   const obtProducto = arrayProductos.find(producto => producto.id == buscar);
+  
+//   return obtProducto;
+// }
+
+// module.exports = {obtenerProducto};

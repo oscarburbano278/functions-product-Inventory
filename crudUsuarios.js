@@ -1,8 +1,7 @@
-module.exports = menuUsuarios;// exportando a inventory.js
 
 
-const { on } = require("events");
-const { copyFileSync } = require("fs");
+
+
 const readline = require("readline");
 
 function capturarValor(mensaje) {
@@ -148,3 +147,13 @@ async function buscarUsuario (arrayUsuarios){
   }
   return
 }
+
+//obtener usuario 
+async function obtenerUsuarioId (arrayUsuarios){
+  let buscar = parseInt(await capturarValor(`ingrese el Id del usuario que desea Obtener:  `));
+
+  const usuario = arrayUsuarios.find(usuario => usuario.id == buscar);
+  
+  return usuario
+}
+module.exports = {menuUsuarios, obtenerUsuarioId};
